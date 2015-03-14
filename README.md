@@ -1,3 +1,8 @@
-Look-At Demos
-Use this project to test out events based on how long you look at an object.
-The brains of the technique is in the LookedAt script.  Add it to an empty object that's parented to the Camera controller (typical for VR), or directly to the camera object.  The Script will raycast out and return the first object that it hits.  The script uses delegates to trigger an event when the object is looked at, and when the camera looks away from the current selected object.
+#### Look-At Demos
+One strategy for VR navigation, especially if you don't have any external imput device, is to trigger events based on how long someone has directly stared at an object or GUI Element.  This project shows one implementation, and a couple of examples.
+
+1. Simple Scene - This is a bare bones scene that you can use as a template.
+2. Light Scene - In this demo you can switch lights on and off by staring at the target next to each bulb.
+3. Box Pick Scene - In this demo you can select boxes by staring at them, then move them to another part of the board.
+
+The "Looking At" script is the brains of the technique.  You can use the look-sensor prefab in your scenes by simply parenting it to the game object that's controlling camera location and orientation.
