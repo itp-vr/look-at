@@ -1,5 +1,5 @@
 #### Look-At Demos
-One strategy for VR navigation, especially if you don't have any external imput device, is to trigger events based on how long someone has directly stared at an object or GUI Element.  This project shows one implementation, and a couple of examples.
+One strategy for VR navigation, especially if you don't have any external imput device, is to trigger events based on how long the user has directly stared at an object or GUI Element.  This project shows one implementation, and 3 examples.
 
 1. Simple Scene - This is a bare bones scene that you can use as a template.
 2. Light Scene - In this demo you can switch lights on and off by staring at the target next to each bulb.
