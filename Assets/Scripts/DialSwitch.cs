@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+
 public class DialSwitch : MonoBehaviour {
 
 	public GameObject offBG;
@@ -15,60 +16,63 @@ public class DialSwitch : MonoBehaviour {
 
 	public event Action<bool> OnSwitchChange;
 
-	void OnEnable() {
+	void OnEnable () {
 		lookingAt.OnLookingAt += HandleOnLookingAt;
 		lookingAt.OnLookedAway += HandleOnLookedAway;
 	}
 
-	void OnDisable(){
+	void OnDisable () {
 		lookingAt.OnLookingAt -= HandleOnLookingAt;
 		lookingAt.OnLookedAway -= HandleOnLookedAway;
 	}
 
 	void HandleOnLookedAway (GameObject seenObj) {
-		if (seenObj.Equals(gameObject)){
+		if (seenObj.Equals (gameObject)) {
 			looking = false;
 			flipped = false;
-			dial.SetActive(false);
-			dial.GetComponent<Renderer>().material.SetFloat("_Cutoff", 1);
+			dial.SetActive (false);
+			dial.GetComponent<Renderer> ().material.SetFloat ("_Cutoff", 1);
 		}
 	}
 
 	void HandleOnLookingAt (GameObject seenObj, float timeSeen) {
-		if (seenObj.Equals(gameObject)){
-			if (!looking && !flipped){
+		if (seenObj.Equals (gameObject)) {
+			if (!looking && !flipped) {
 				looking = true;
-				dial.SetActive(true);
+				dial.SetActive (true);
 			}
 			lookPct = timeSeen / lookTime;
-			if (lookPct < 1 ){
+			if (lookPct < 1) {
 				//Debug.Log("look pct = "+lookPct);
-				dial.GetComponent<Renderer>().material.SetFloat("_Cutoff", 1-lookPct);
+				dial.GetComponent<Renderer> ().material.SetFloat ("_Cutoff", 1 - lookPct);
 			} else {
-				if (!flipped){
+				if (!flipped) {
 					on = !on;
 					flipped = true;
 					//Debug.Log("FLIP SWITCH");
-					dial.SetActive(false);
-					setSwitchView();
+					dial.SetActive (false);
+					setSwitchView ();
 					//do flip switch
-					if (OnSwitchChange != null)OnSwitchChange(on);
+					if (OnSwitchChange != null)
+						OnSwitchChange (on);
 				}
 			}
 		}
 	}
 
-	private void setSwitchView(){
-		onBG.SetActive(on);
-		offBG.SetActive(!on);
+	private void setSwitchView () {
+		onBG.SetActive (on);
+		offBG.SetActive (!on);
 	}
 
-	void Awake(){
-		dial.SetActive(false);
-		setSwitchView();
+	void Awake () {
+		dial.SetActive (false);
+		setSwitchView ();
 	}
 
-	void Start () {}
+	void Start () {
+	}
 
-	void Update () {}
+	void Update () {
+	}
 }

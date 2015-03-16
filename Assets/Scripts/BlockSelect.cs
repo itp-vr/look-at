@@ -2,8 +2,7 @@
 using System.Collections;
 using System;
 
-public class BlockSelect : MonoBehaviour
-{
+public class BlockSelect : MonoBehaviour {
 
 	public LookingAt lookingAt;
 	public GameObject grabber;
@@ -13,27 +12,24 @@ public class BlockSelect : MonoBehaviour
 	private Rigidbody rbody;
 	private bool grabbed;
 
-	void OnEnable ()
-	{
+	void OnEnable () {
 		lookingAt.OnLookingAt += HandleOnLookingAt;
 		lookingAt.OnLookedAway += HandleOnLookedAway;
 	}
 	
-	void OnDisable ()
-	{
+	void OnDisable () {
 		lookingAt.OnLookingAt -= HandleOnLookingAt;
 		lookingAt.OnLookedAway -= HandleOnLookedAway;
 	}
 
-	void HandleOnLookedAway (GameObject seenObj)
-	{
+	void HandleOnLookedAway (GameObject seenObj) {
 		if (seenObj.Equals (gameObject)) {
-			if (!grabbed){
+			if (!grabbed) {
 				looking = false;
 				GetComponent<Renderer> ().material.color = Color.white;
 			} else {
-					grabber.GetComponent<LineRenderer>().enabled = false;
-					grabbed = false;
+				grabber.GetComponent<LineRenderer> ().enabled = false;
+				grabbed = false;
 			}
 		}
 	}
@@ -49,11 +45,12 @@ public class BlockSelect : MonoBehaviour
 				GetComponent<Renderer> ().material.color = Color.Lerp (Color.white, Color.red, lookPct);
 			} else {
 				if (!grabbed) {
-					grabber.GetComponent<LineRenderer>().enabled = true;
+					grabber.GetComponent<LineRenderer> ().enabled = true;
 					grabbed = true;
 					//Debug.Log("grabbing ");
 					FixedJoint grabJoint = grabber.GetComponent<FixedJoint> ();
-					if (grabJoint != null) Destroy(grabJoint);
+					if (grabJoint != null)
+						Destroy (grabJoint);
 					grabJoint = grabber.AddComponent<FixedJoint> ();
 					grabJoint.breakForce = 4000;
 					grabJoint.breakTorque = 4000;
@@ -64,24 +61,21 @@ public class BlockSelect : MonoBehaviour
 		}
 	}
 
-	void Awake ()
-	{
+	void Awake () {
 		rbody = gameObject.GetComponent<Rigidbody> ();
 	}
 	// Use this for initialization
-	void Start ()
-	{
+	void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update ()
-	{
-		if (grabbed){
-			LineRenderer line = grabber.GetComponent<LineRenderer>();
+	void Update () {
+		if (grabbed) {
+			LineRenderer line = grabber.GetComponent<LineRenderer> ();
 			if (line.enabled) {
-				line.SetPosition(0, grabber.transform.position);
-				line.SetPosition(1, transform.position);
+				line.SetPosition (0, grabber.transform.position);
+				line.SetPosition (1, transform.position);
 			}
 		}
 	}

@@ -5,8 +5,8 @@ public class LoadScene : MonoBehaviour {
 
 	//load a new scene
 
-	public void OnClick(string SceneName){
-		Application.LoadLevel(SceneName);
+	public void OnClick (string SceneName) {
+		Application.LoadLevel (SceneName);
 	}
 
 	// Use this for initialization

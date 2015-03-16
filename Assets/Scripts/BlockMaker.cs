@@ -10,12 +10,12 @@ public class BlockMaker : MonoBehaviour {
 	private float elevation = 0.5f;
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < amount; i++){
+		for (int i = 0; i < amount; i++) {
 			Vector3 coords;
-			float polar = Random.Range(Mathf.PI*-20, Mathf.PI*20);
-			SphericalCoords.SphericalToCartesian(radius, polar, Random.Range(elevation-variation, elevation+variation),out coords);
+			float polar = Random.Range (Mathf.PI * -20, Mathf.PI * 20);
+			SphericalCoords.SphericalToCartesian (radius, polar, Random.Range (elevation - variation, elevation + variation), out coords);
 			//Debug.Log("coords="+coords);
-			Instantiate(block, coords, Quaternion.identity);
+			Instantiate (block, coords, Quaternion.identity);
 		}
 	}
 	
