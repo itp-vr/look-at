@@ -20,8 +20,8 @@ public class SphericalCoords : MonoBehaviour {
 		                       + (cartCoords.y * cartCoords.y)
 		                       + (cartCoords.z * cartCoords.z));
 		outPolar = Mathf.Atan2(cartCoords.z, cartCoords.x);
-		if (cartCoords.x < 0)
-			outPolar += Mathf.PI;
+		//if (cartCoords.x < 0)
+			//outPolar += Mathf.PI;
 		outElevation = Mathf.Asin(cartCoords.y / outRadius);
 	}
 

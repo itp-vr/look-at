@@ -6,3 +6,5 @@ One strategy for VR navigation, especially if you don't have any external imput 
 3. Box Pick Scene - In this demo you can select boxes by staring at them, then move them to another part of the board.
 
 The "Looking At" script is the brains of the technique.  You can use the look-sensor prefab in your scenes by simply parenting it to the game object that's controlling camera location and orientation.
+
+If you add a line renderer to the look-sensor then it will draw a line to the object you're looking at.
